@@ -2,23 +2,26 @@ version: '3'
 
 services:
   frontend:
-    build: ./frontend
+    image: shoeb2144/react:latest
     ports:
       - "80:80"
 
   backend:
-    build: ./backend
+    image: shoeb2144/nodejs:latest
     ports:
       - "3000:3000"
     depends_on:
-      - database
+      - mongodb
 
-  database:
-    image: mongo:latest
+  mongodb:
+    image: mongo
     ports:
       - "27017:27017"
     volumes:
-      - db_data:/data/db
+      - mongo_dp:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
 
 volumes:
-  db_data:
+  mongo_dp: {}
