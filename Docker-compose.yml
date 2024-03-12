@@ -4,12 +4,12 @@ services:
   frontend:
     image: shoeb2144/react:latest
     ports:
-      - "80:3000"
+      - "3000:3000"
 
   backend:
     image: shoeb2144/nodejs:latest
     ports:
-      - "3000:5001"
+      - "3500:3500"
     depends_on:
       - mongodb
 
